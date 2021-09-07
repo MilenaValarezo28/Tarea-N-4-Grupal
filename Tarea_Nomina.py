@@ -3,10 +3,9 @@ import os
 
 class Empresa:
     id=0
-    def __init__(self, nombreEmp='', ruc='',direccion='' , tlfn='', rS='', empleado='', descrip=''):
+    def __init__(self, ruc='',direccion='' , tlfn='', rS='', empleado='', descrip=''):
         Empresa.id+=1
         self.id= Empresa.id
-        self.nombre = nombreEmp
         self.ruc= ruc
         self.direccion=direccion
         self.telefono= tlfn
@@ -15,8 +14,7 @@ class Empresa:
         self.departamento= Departamento(descrip, empleado)
 
     def mostrarEmpresa(self):
-        print("Empresa: {}\nId: {}\n Ruc: {}\nTelefono: {}\nDirección: {}\nRazón Social: {}".format(self.nombre, self.id, self.ruc,
-                                                                                  self.telefono, self.direccion, self.razonSocial))
+        print("Empresa: {}\nId: {}\n Ruc: {}\nTelefono: {}\nDirección: {}".format(self.razonSocial, self.id, self.ruc, self.telefono, self.direccion))
 
 class Departamento:
     id=0
@@ -182,11 +180,10 @@ class Nomina:
 
 os.system("cls")
 print("---DATOS DE LA EMPRESA---")
-nombrEmp = input('Nombre de la empresa: ')
+razonsocial= input("Ingrese la razón social de la empresa: ")
 ruc= int(input("Ingrese el R.U.C de la empresa: "))
 direccion= input("Ingrese la dirección donde se encuentra la empresa: ")
 tlfn= int(input("Ingrese el número telefonico de la empresa: "))
-razonsocial= input("Ingrese la razón social de la empresa: ")
 print("")
 print("---DATOS EMPLEADO---")
 nombre= input("Ingrese el nombre del empleado: ")
@@ -252,7 +249,7 @@ print("")
 print("---EMPRESA---")
 if descripcion == 'Administrativo': emp = EmpleadoAdministrativo(nombre,sueldo,telefono,fechaIngreso,0,comision)
 else: emp= EmpleadoObrero(nombre,sueldo,telefono,fechaIngreso, 0,sindicato, True)
-empresa= Empresa(nombrEmp, ruc, direccion, tlfn, razonsocial, emp, descripcionDepa)
+empresa= Empresa(ruc, direccion, tlfn, razonsocial, emp, descripcionDepa)
 if pres=="Si":
     prest= Prestamos(fechaP, valor, numPagos, emp, 0,0, True)
 else: prest=Prestamos()
